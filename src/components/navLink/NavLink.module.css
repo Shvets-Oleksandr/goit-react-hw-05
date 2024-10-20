@@ -1,0 +1,11 @@
+.link {
+  display: inline-block;
+  height: 30px;
+  margin-right: 10px;
+  color: black;
+  text-decoration: inherit;
+}
+
+.active {
+  color: red;
+}
