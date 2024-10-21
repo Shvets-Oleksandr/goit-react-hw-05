@@ -3,8 +3,21 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 999;
   width: 100%;
   padding: 0 30px;
+  background-color: white;
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);
+}
+
+.link {
+  display: inline-block;
+  height: 30px;
+  margin-right: 10px;
+  color: black;
+  text-decoration: inherit;
+}
+
+.active {
+  color: red;
 }
