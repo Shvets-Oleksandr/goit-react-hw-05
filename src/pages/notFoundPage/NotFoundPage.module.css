@@ -1,0 +1,17 @@
+.goHomeBtn {
+  margin-left: 8px;
+  padding: 2px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgb(216, 238, 231);
+}
+
+.goHomeBtn:hover {
+  background-color: rgb(190, 220, 210);
+}
+
+.goHomeBtn:active {
+  background-color: rgb(223, 245, 238);
+}

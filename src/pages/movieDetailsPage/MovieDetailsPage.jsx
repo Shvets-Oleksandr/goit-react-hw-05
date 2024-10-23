@@ -1,10 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
-const MoviesDetailPage = () => {
+import GoBack from '../../components/goBack/GoBack';
+
+import css from './MovieDetailsPage.module.css';
+
+const MovieDetailPage = () => {
+  const location = useLocation();
+
   return (
-    <section>
-      <div>
-        <img src="/dfge" alt="Moivies baner" width={346} height={180} />
+    <section className={css.movieContainer}>
+      <GoBack className={css.btnGoBack} />
+      <div className={css.movieCard}>
+        <img src="/dfge" alt="Moivies baner" width={240} height={420} />
         <div>
           <h3>Movie Title</h3>
           <p>User score {'00%'}</p>
@@ -21,16 +28,24 @@ const MoviesDetailPage = () => {
           </p>
         </div>
       </div>
-      <ul>
-        <li>
-          <Link>Cast</Link>
-        </li>
-        <li>
-          <Link>Reviews</Link>
-        </li>
-      </ul>
+      <div className={css.addInfo}>
+        <p>Aditional information</p>
+        <ul className={css.addInfoList}>
+          <li>
+            <Link state={location} to={'cast'}>
+              Cast
+            </Link>
+          </li>
+          <li>
+            <Link state={location} to={'reviews'}>
+              Reviews
+            </Link>
+          </li>
+        </ul>
+        <Outlet />
+      </div>
     </section>
   );
 };
 
-export default MoviesDetailPage;
+export default MovieDetailPage;
