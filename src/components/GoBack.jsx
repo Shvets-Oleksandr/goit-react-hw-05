@@ -2,12 +2,10 @@ import { useLocation, Link } from 'react-router-dom';
 
 const GoBack = ({ className }) => {
   const location = useLocation();
-  const backLinkHref = location.state.from;
-  console.log(location.state);
-  console.log(backLinkHref);
+  const backLink = location.state?.from || '/movies';
 
   return (
-    <Link className={className} to={backLinkHref}>
+    <Link className={className} to={backLink}>
       ← Go back
     </Link>
   );

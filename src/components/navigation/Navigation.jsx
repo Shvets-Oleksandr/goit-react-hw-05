@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
-import NavLinkHome from '../navLinkHome/NavLinkHome';
-import NavLinkMovies from '../navLinkMovies/NavLinkMovies';
+import NavLinkHome from '../NavLinkHome';
+import NavLinkMovies from '../NavLinkMovies';
 
 import css from './Navigation.module.css';
 
