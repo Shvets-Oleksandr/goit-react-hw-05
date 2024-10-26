@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
 import { movieById } from '../../api/movie';
@@ -94,7 +94,9 @@ const MovieDetailPage = () => {
             </Link>
           </li>
         </ul>
-        <Outlet />
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </section>
   );
