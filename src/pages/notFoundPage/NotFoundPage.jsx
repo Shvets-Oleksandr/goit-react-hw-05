@@ -5,9 +5,9 @@ import css from './NotFoundPage.module.css';
 const NotFoundPage = () => {
   return (
     <>
-      <p>Any information not found</p>
+      <p>Sorry, the page you’re looking for doesn’t exist.</p>
       <Link className={css.goHomeBtn} to={'/'}>
-        Go back to home page
+        Return to the homepage
       </Link>
     </>
   );

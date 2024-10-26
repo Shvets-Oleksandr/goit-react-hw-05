@@ -25,8 +25,8 @@ function App() {
           <Route path="/movies/:movieId" element={<MovieDetailPage />}>
             <Route path="reviews" element={<MovieReviews />} />
             <Route path="cast" element={<MovieCast />} />
-            <Route path="*" element={<NotFoundPage />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </>

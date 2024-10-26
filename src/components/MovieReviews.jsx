@@ -1,33 +1,55 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { reviewsById } from '../api/movie';
+
+import ErrorMessage from './ErrorMessage';
+import Loader from './Loader';
+
 const MovieReviews = () => {
+  const { movieId } = useParams();
+
+  const [reviews, setReviews] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        setError(false);
+        setIsLoading(true);
+        const data = await reviewsById(movieId);
+        setReviews(data.results);
+      } catch (error) {
+        setError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchReviews();
+  }, [movieId]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage />;
+  }
+
+  if (reviews === null || reviews.length === 0) {
+    return <p>No reviews available for this movie.</p>;
+  }
+
   return (
     <ul>
-      <li>
-        <h3>Author: {'Tor'}</h3>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit
-          placeat, esse corrupti amet molestias officia nesciunt quasi doloribus
-          nihil veritatis perferendis vitae numquam voluptatem tempore natus
-          maxime quis quos cumque.
-        </p>
-      </li>
-      <li>
-        <h3>Author: {'Tor'}</h3>
-        <p>
-          Ullam repudiandae facilis, eligendi sequi pariatur ea maiores itaque
-          iure beatae est, in deserunt ipsa tenetur hic? Recusandae consequuntur
-          atque rerum minima sequi dolores, rem mollitia earum velit obcaecati
-          eius!
-        </p>
-      </li>
-      <li>
-        <h3>Author: {'Tor'}</h3>
-        <p>
-          Quae eaque sequi at natus mollitia iusto doloremque recusandae,
-          distinctio cum? At recusandae laborum praesentium, magni distinctio
-          error. Impedit deserunt a tenetur accusamus laudantium aut esse
-          adipisci ad, voluptate praesentium!
-        </p>
-      </li>
+      {reviews.map(review => (
+        <li key={review.id}>
+          <h3>Author: {review.author}</h3>
+          <p>{review.content}</p>
+        </li>
+      ))}
     </ul>
   );
 };

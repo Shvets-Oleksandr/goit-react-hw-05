@@ -36,3 +36,8 @@ export const castById = async movieId => {
   const { data } = await movieInstance.get(`/movie/${movieId}/credits`);
   return data;
 };
+
+export const reviewsById = async movieId => {
+  const { data } = await movieInstance.get(`/movie/${movieId}/reviews`);
+  return data;
+};

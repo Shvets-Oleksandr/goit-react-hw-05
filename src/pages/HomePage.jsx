@@ -28,16 +28,10 @@ const HomePage = () => {
     fetchMovies();
   }, []);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <ErrorMessage />;
-  }
-
   return (
     <section>
+      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
       <h2>Trending movies</h2>
       {movies && <MovieList movies={movies} />}
     </section>

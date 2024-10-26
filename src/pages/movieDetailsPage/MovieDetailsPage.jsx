@@ -35,8 +35,16 @@ const MovieDetailPage = () => {
     fetchMovie();
   }, [movieId]);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage />;
+  }
+
   if (!movie) {
-    return isLoading ? <Loader /> : <ErrorMessage />;
+    return;
   }
 
   const defaultImg =
@@ -58,9 +66,7 @@ const MovieDetailPage = () => {
 
   return (
     <section className={css.movieContainer}>
-      {error && <ErrorMessage />}
-      {isLoading && <Loader />}
-      <GoBack className={css.btnGoBack} />
+      <GoBack className={css.goBackBtn} />
       <div className={css.movieCard}>
         <img src={img} alt="poster" width={250} />
         <div>

@@ -37,17 +37,14 @@ const MoviesPage = () => {
     setSearchParams({ query: inputValue });
   };
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <ErrorMessage />;
-  }
-
   return (
     <section>
       <SearchBar onSubmit={onSubmit} />
+      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
+      {movies && movies.length === 0 && (
+        <p>No movies found for the query: &quot;{query}&quot;.</p>
+      )}
       {movies && <MovieList movies={movies} />}
     </section>
   );

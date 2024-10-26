@@ -1,4 +1,5 @@
 .goHomeBtn {
+  display: inline-block;
   margin-left: 8px;
   padding: 2px;
   text-decoration: none;
